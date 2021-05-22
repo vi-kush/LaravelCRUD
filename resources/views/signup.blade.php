@@ -8,7 +8,7 @@
     <h4> Registration </h4>
     </div>
     <div class="form-floating mb-3">
-  <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name" value="{{old('name')}}">
+  <input type="text" class="form-control" id="floatingInput" placeholder="Name" name="name" value="{{old('name')}}" required>
   <label for="floatingInput">Name</label>
   <span style="color:red"> @error('name') {{$message}} @enderror </span>
     </div>
