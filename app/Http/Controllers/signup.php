@@ -12,6 +12,7 @@ class signup extends Controller
 
         $req->validate(
             [
+                'name' => 'alpha',
                 'email'=>'required | unique:logins,useremail',
                 'password'=> 'required | min:8'
             ]

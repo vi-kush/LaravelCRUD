@@ -34,10 +34,17 @@ Route::get('/register',function(){
 
 Route::post('signup',[signup::class,'sign']);
 
-Route::get('/tasks',function(){
-    if(session()->missing('user')) return redirect('login');
-    return view('tasks'); 
+Route::get('signup',function(){
+    if(session()->has('user')) return redirect('tasks');
+    return view('signup');
 });
+
+Route::view('/tasks','task')->middleware('task');
+
+// Route::get('/tasks',function(){
+//     if(session()->missing('user')) return redirect('login');
+//     return view('tasks'); 
+// });
 
 Route::get('/logout',function(){
     if(session()->has('user')) session()->pull('user',NULL);
