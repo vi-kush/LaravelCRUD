@@ -39,7 +39,7 @@ Route::get('signup',function(){
     return view('signup');
 });
 
-Route::view('/tasks','task')->middleware('task');
+Route::view('/tasks','tasks')->middleware('task');
 
 // Route::get('/tasks',function(){
 //     if(session()->missing('user')) return redirect('login');
