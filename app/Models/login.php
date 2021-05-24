@@ -11,7 +11,7 @@ class login extends Model
 
     //mutator method to capitalize first alphabet
     public function setUsernameAttribute($name){
-        return ucfirst($value);
+        return ucfirst($name);
     }    
 
 

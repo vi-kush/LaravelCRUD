@@ -8,7 +8,7 @@
     <span style="color:red; padding:2px;"><small> {{session('error')}} </small> </span>
     <h4> Login </h4> 
     <div class="form-floating mb-3">
-  <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email" value="{{old('email')}}" required>
+  <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com" name="email" value="{{old('email')}}" required>
   <label for="floatingInput">Email address</label>
     </div>
     <div class="form-floating">
