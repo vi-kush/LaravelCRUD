@@ -10,7 +10,9 @@ class login extends Model
     use HasFactory;
 
     //mutator method to capitalize first alphabet
-    public function setUsernameAttribute($name){
+
+    public function getUsernameAttribute($name){
+
         return ucfirst($name);
     }    
 
