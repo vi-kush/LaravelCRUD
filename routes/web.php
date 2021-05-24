@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\verify;
 use App\Http\Controllers\signup;
-
+use App\Http\Controllers\taskController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,3 +50,5 @@ Route::get('/logout',function(){
     if(session()->has('user')) session()->pull('user',NULL);
     return redirect('login');
 });
+
+Route::post('/tasks',[taskController::class,'add']);

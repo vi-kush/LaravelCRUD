@@ -19,11 +19,24 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-          <a class="navbar-brand " href="#">{{(session()->has('user')?session('user'):'To-Do')}}</a>
+          <h3 class="navbar-brand " href="#">{{(session()->has('user')?session('user'):'To-Do')}}</h3>
           <div class="nav-item">
             @if(session()->has('user')) <a href="logout" class="btn btn-outline-secondary"> Logout </a> @endif
           </div>
         </div>
     </nav>
 
+    @if(session('add_success'))
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> New Task Added.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
+
+    @if(session('add_error'))
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+      <strong>Error!</strong> Invalid Input.
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    @endif
     

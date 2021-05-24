@@ -5,7 +5,7 @@
     <form action='login' method='POST'>
     @csrf
     <div>
-    <span style="color:red; padding:2px;"><small> {{session('error')}} </small> </span>
+    <span style="color:red; padding:2px;"><small> {{session('login_error')}} </small> </span>
     <h4> Login </h4> 
     <div class="form-floating mb-3">
   <input type="email" class="form-control " id="floatingInput" placeholder="name@example.com" name="email" value="{{old('email')}}" required>

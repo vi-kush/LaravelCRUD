@@ -12,7 +12,7 @@ class signup extends Controller
 
         $req->validate(
             [
-                'name' => 'alpha',
+                'name' => 'alpha_dash',
                 'email'=>'required | unique:logins,useremail',
                 'password'=> 'required | min:8'
             ]
@@ -24,7 +24,9 @@ class signup extends Controller
         $db->userpass = md5($req->password);
         $db->save();
 
-        session(['user'=>$req->name]);
+        $userdata=login::where('useremail',$req->email)->first();
+
+        session(['user'=>$userdata->username, 'id'=>$userdata->id]);
         return redirect('tasks');
     }
 }

@@ -17,7 +17,7 @@ class CreateTasksTable extends Migration
             $table->id();
             $table->foreignId('login_id')->constrained();
             $table->longText('task');
-            $table->string('status',10);
+            $table->string('status',10)->default('pending');
             $table->timestamps();
         });
     }

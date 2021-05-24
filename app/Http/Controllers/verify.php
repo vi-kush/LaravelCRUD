@@ -13,18 +13,16 @@ class verify extends Controller
         $email = $req->input('email');
         $password = md5($req->input('password'));
 
-        $userpass=login::where('useremail',$email)->value('userpass');
+        $userdata=login::where('useremail',$email)->first();
         
-        $user=login::where('useremail',$email)->value('username');
-        
-
-        //return strcmp($userpass,$password);
-        if($userpass == $password){
-            session(['user'=>$user]);
+        //return $userdata;
+    
+        if($userdata->userpass == $password){
+            session(['user'=>$userdata->username, 'id'=>$userdata->id]);
             return redirect('tasks');
         }
         else{
-            session()->flash('error','Wrong User id or password');
+            session()->flash('login_error','Wrong User Email or Password');
             return redirect('login');
         }
     }
