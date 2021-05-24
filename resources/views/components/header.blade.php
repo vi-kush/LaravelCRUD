@@ -19,7 +19,10 @@
 
     <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand " href="#">{{(session()->has('user')?session('user'):'To-Do')}}</a>
+          <a class="navbar-brand " href="#">{{(session()->has('user')?session('user'):'To-Do')}}</a>
+          <div class="nav-item">
+            @if(session()->has('user')) <a href="logout" class="btn btn-outline-secondary"> Logout </a> @endif
+          </div>
         </div>
     </nav>
 
