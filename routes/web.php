@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\verify;
 use App\Http\Controllers\signup;
 use App\Http\Controllers\taskController;
+use App\Http\Controllers\listController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -52,3 +53,8 @@ Route::get('/logout',function(){
 });
 
 Route::post('/tasks',[taskController::class,'add']);
+
+Route::get('/list',[listController::class,'show']);
+
+Route::post('/list',[listController::class,'update']);
+

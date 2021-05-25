@@ -19,5 +19,10 @@ class loginseeder extends Seeder
             'useremail'=>'vipul@kumar.com',
             'userpass'=>md5('vipulkumar')
         ]);
+        DB::table('logins')->insert([
+            'username'=>'vipul',
+            'useremail'=>'vipul1@kumar.com',
+            'userpass'=>md5('vipulkumar')
+        ]);
     }
 }

@@ -13,8 +13,9 @@
     </form>
 </div>
 <br>
-<div class="container-fluid mt-4">
 
+<div class="container mt-2">
+<a href="list" class="btn btn-outline-secondary"> Show Tasks </a>
 
 </div>
 

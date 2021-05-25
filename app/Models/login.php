@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\task;
 
 class login extends Model
 {
@@ -15,6 +16,10 @@ class login extends Model
 
         return ucfirst($name);
     }    
+
+    public function tasks(){
+        return $this->hasmany(task::class);
+    }
 
 
 }
