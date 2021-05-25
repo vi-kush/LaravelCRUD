@@ -1,5 +1,8 @@
 <x-header/>
-<br>
+<div style="width:100%; display: inline-flex; flex-direction: row; justify-content: space-between;">
+    <h4 class="m-2"> Tasks :</h4>
+    <a href="tasks" class="btn btn-sm btn-outline-secondary m-2"> Go back </a>
+</div>
 <div class="container-fluid" style="width:80%">
 <ul style="list-style-type:none;">
 
@@ -24,7 +27,6 @@
     </div>
     @endforeach
 </form>
-
 </ul>
 </div>
 

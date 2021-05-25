@@ -23,7 +23,7 @@ class taskController extends Controller
             $res = $data->save();  
         }
     
-        if($res) session()->flash('add_success',true);
+        if($res) session()->flash('add_success','Task added!!');
         else session()->flash('add_error',true);
 
         return redirect('tasks');

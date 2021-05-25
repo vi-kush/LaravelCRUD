@@ -17,7 +17,7 @@
     <!-- Option 1: Bootstrap Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
 
-    <nav class="navbar navbar-light bg-light">
+    <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container-fluid">
           <h3 class="navbar-brand " href="#">{{(session()->has('user')?session('user'):'To-Do')}}</h3>
           <div class="nav-item">
@@ -26,9 +26,9 @@
         </div>
     </nav>
 
-    @if(session('add_success'))
+    @if(session('add_success')||session('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
-      <strong>Success!</strong> New Task Added.
+      <strong>Success!</strong> {{(session('add_success')??session('success'))}}
       <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
     @endif

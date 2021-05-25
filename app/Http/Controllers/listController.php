@@ -9,7 +9,7 @@ use App\Models\task;
 class listController extends Controller
 {
     function show(){
-        $data = login::find(session('id'))->tasks()->get();
+        $data = login::find(session('id'))->tasks()->orderByDesc('created_at')->get();
         //return $data->toArray();
         return view('lists',['data'=>$data->toArray()]);
     }
@@ -23,6 +23,7 @@ class listController extends Controller
         $data->status = $status;
         $data->save();
 
+        session()->flash('success','Done');
         return redirect('list');
     }
 }
