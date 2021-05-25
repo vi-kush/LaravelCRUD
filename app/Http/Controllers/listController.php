@@ -16,13 +16,18 @@ class listController extends Controller
 
     function update(Request $req){
 
-        $id = $req->pending??$req->done;
-        $status = ($req->pending?'done':'pending');
+        if($req->has('delete'))
+            
+            task::find($req->delete)->delete();
+        else{
 
-        $data = task::find($id);
-        $data->status = $status;
-        $data->save();
+            $id = $req->pending??$req->done;
+            $status = ($req->pending?'done':'pending');
 
+            $data = task::find($id);
+            $data->status = $status;
+            $data->save();
+        }
         session()->flash('success','Done');
         return redirect('list');
     }

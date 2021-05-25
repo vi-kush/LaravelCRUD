@@ -18,10 +18,13 @@
             </div>
             <div class="input-group">
                 <span class="input-group-text">Status</span>
-                <span class="form-control">{{ ucfirst($d['status']) }}</span>
-                @if($d['status']=='pending')<button class="btn btn-outline-success" name="pending" value="{{$d['id']}}">mark as Done</button>
-                @elseif($d['status']=='done')<button class="btn btn-outline-warning" name="done" value="{{$d['id']}}">mark as Pending</button>
+                <span class="form-control" style="min-width:5rem;">{{ ucfirst($d['status']) }}</span>
+                <span>
+                @if($d['status']=='pending')<button class="btn btn-outline-success" name="pending" value="{{$d['id']}}">Mark as Done</button>
+                @elseif($d['status']=='done')<button class="btn btn-outline-warning" name="done" value="{{$d['id']}}">Pending</button>
+                <button class="btn btn-outline-danger" name="delete" value="{{$d['id']}}">Remove</button>
                 @endif
+            </span>
             </div>
         </li>
     </div>
