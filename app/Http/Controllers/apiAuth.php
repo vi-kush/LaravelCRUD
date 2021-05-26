@@ -14,7 +14,7 @@ class apiAuth extends Controller
         $data=$req->validate([
             'name'=>'required|string',
             'password'=>'required|string',
-            'email'=>'required|unique:Users,email',
+            'email'=>'required|unique:Users,email|unique:logins,useremail',
         ]);
 
         
