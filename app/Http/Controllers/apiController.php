@@ -55,8 +55,8 @@ class apiController extends Controller
 
         $response = [
             'taskObject'=> $task,
-            'status'=> 'Pending',
-            'message'=> 'Task Added',
+            'status'=> 1,
+            'message'=> 'Successfully Created',
         ];
             
         return response($response,200);
@@ -86,8 +86,8 @@ class apiController extends Controller
 
         $response = [
             'taskObject'=> $task,
-            'status'=> $task->status,
-            'message'=> 'Status Updated',
+            'status'=> 1,
+            'message'=> 'Marked Task as '.$task->status,
         ];
             
         return response($response,200);
