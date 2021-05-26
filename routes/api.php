@@ -24,6 +24,7 @@ Route::post('/register',[apiAuth::class,'register']);
 
 Route::middleware('auth:sanctum')->group(function() {
 
+    Route::post('/todo/show',[apiController::class,'show']);
     Route::post('/todo/add',[apiController::class,'store']);
     Route::post('/todo/status',[apiController::class,'status']);
 });

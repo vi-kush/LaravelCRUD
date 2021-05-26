@@ -97,12 +97,18 @@ class apiController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+       
+        $data = $request->validate([
+            'login_id'=>'required|numeric',
+        ]);
+        
+        $tasks = task::where('login_id',$data['login_id'])->get()->toArray();
+        return $tasks!=[]?$tasks:['error'=>'No task to Show'];
     }
 
     /**
@@ -120,10 +126,10 @@ class apiController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
     }
