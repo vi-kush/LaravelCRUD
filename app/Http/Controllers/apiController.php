@@ -45,7 +45,7 @@ class apiController extends Controller
         ]);
 
         if(!login::find($data['user_id'])){
-            return ['error'=>'id not in records'];
+            return ['status'=>0 , 'error'=> 'ID not in Records'];
         }
 
         $task = new task;
