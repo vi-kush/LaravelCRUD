@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\task;
+use App\Models\login;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\Rule;
+
 
 class apiController extends Controller
 {
@@ -24,8 +29,70 @@ class apiController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // validator::make($request->all(),[
+           
+        //     'task'=>'required',
+        //     'login_id'=>['bail' , 'required', Rule::exists('login_id')->where(function($query) {
+        //             return $query()->where('login_id', $request->login_id);
+        //         }
+        //     )],
+        // ]);
+        
+        $data = $request->validate([
+            'task'=>'required|string',
+            'user_id'=>'required|numeric'
+        ]);
+
+        if(!login::find($data['user_id'])){
+            return ['error'=>'id not in records'];
+        }
+
+        $task = new task;
+        $task->login_id = $data['user_id'];
+        $task->task = $data['task'];
+        $task->save();
+
+        $response = [
+            'taskObject'=> $task,
+            'status'=> 'Pending',
+            'message'=> 'Task Added',
+        ];
+            
+        return response($response,200);
+        
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+     public function status(Request $request)
+     {
+        $data = $request->validate([
+            'task_id'=>'required|numeric',
+            'status'=>'required|string'
+        ]);
+
+        if(!login::find($data['task_id'])){
+            return ['error'=>'id not in records'];
+        }
+
+        $task =task::find($data['task_id']);
+        $task->status = $data['status'];
+        $task->save();
+
+        $response = [
+            'taskObject'=> $task,
+            'status'=> $task->status,
+            'message'=> 'Status Updated',
+        ];
+            
+        return response($response,200);
+        
+     }
 
     /**
      * Display the specified resource.

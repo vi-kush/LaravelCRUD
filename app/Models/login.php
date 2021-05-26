@@ -12,6 +12,7 @@ class login extends Model
 
     //mutator method to capitalize first alphabet
 
+    protected $fillable = ['username','useremail','userpass'];
     public function getUsernameAttribute($name){
 
         return ucfirst($name);
