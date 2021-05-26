@@ -45,7 +45,7 @@ class apiController extends Controller
         ]);
 
         if(!login::find($data['user_id'])){
-            return ['status'=>0 , 'error'=> 'ID not in Records'];
+            return ['status'=>0 , 'error'=> 'ID not in Records. Please enter Valid User_id'];
         }
 
         $task = new task;
@@ -76,9 +76,9 @@ class apiController extends Controller
             'status'=>'required|string'
         ]);
 
-        // if(!login::find($data['task_id'])){
-        //     return ['error'=>'id not in records'];
-        // }
+        if(!task::find($data['task_id'])){
+            return ['status'=>0 , 'error'=> 'ID not in Records. Please check Task_id'];
+        }
 
         $task =task::find($data['task_id']);
         $task->status = $data['status'];
