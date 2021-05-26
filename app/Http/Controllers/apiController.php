@@ -76,9 +76,9 @@ class apiController extends Controller
             'status'=>'required|string'
         ]);
 
-        if(!login::find($data['task_id'])){
-            return ['error'=>'id not in records'];
-        }
+        // if(!login::find($data['task_id'])){
+        //     return ['error'=>'id not in records'];
+        // }
 
         $task =task::find($data['task_id']);
         $task->status = $data['status'];

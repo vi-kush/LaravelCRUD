@@ -14,27 +14,30 @@ class apiAuth extends Controller
         $data=$req->validate([
             'name'=>'required|string',
             'password'=>'required|string',
-            'email'=>'required|unique:Users,email|unique:logins,useremail',
+            'email'=>'required|unique:logins,useremail',
         ]);
 
         
-        $log = User::create([
-            'name'=> $data['name'],
-            'email'=>$data['email'],
-            'password'=>md5($data['password']),
-        ]);
+        // $log = User::create([
+        //     'name'=> $data['name'],
+        //     'email'=>$data['email'],
+        //     'password'=>md5($data['password']),
+        // ]);
 
-        $token = $log->createToken('helloatg')->plainTextToken;
         //$token = 'helloatg';
-
-        $userdata=User::where('email',$req->email)->first();
-
+        
+        
+        
         $login = new login;
-        $login->id = $userdata->id;
+        //$login->id = $userdata->id;
         $login->username = $req->name;
         $login->useremail = $req->email;
         $login->userpass = md5($req->password);
         $login->save();
+        
+        $token = $login->createToken('helloatg')->plainTextToken;
+        
+        $userdata=login::where('useremail',$req->email)->first();
 
         $response = [
             'user_id'=> $userdata->id,

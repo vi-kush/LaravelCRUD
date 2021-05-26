@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\task;
+use Laravel\Sanctum\HasApiTokens;
 
 class login extends Model
 {
-    use HasFactory;
+    use HasFactory, HasApiTokens;
 
     //mutator method to capitalize first alphabet
 
