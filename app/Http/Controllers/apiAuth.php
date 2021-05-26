@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\login;
-use App\Models\User;
+//use App\Models\User;
 
 class apiAuth extends Controller
 {
@@ -24,9 +24,7 @@ class apiAuth extends Controller
         //     'password'=>md5($data['password']),
         // ]);
 
-        //$token = 'helloatg';
-        
-        
+        //$token = 'helloatg';        
         
         $login = new login;
         //$login->id = $userdata->id;
