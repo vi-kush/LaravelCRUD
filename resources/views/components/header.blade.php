@@ -19,9 +19,9 @@
 
     <nav class="navbar navbar-light bg-light sticky-top">
         <div class="container-fluid">
-          <h3 class="navbar-brand " href="#">{{(session()->has('user')?session('user'):'To-Do')}}</h3>
+          <h3 class="navbar-brand " href="#">{{ucfirst(Auth::user()->name)}}</h3>
           <div class="nav-item">
-            @if(session()->has('user')) <a href="logout" class="btn btn-outline-secondary"> Logout </a> @endif
+            <a href="logout" class="btn btn-outline-secondary"> Logout </a>
           </div>
         </div>
     </nav>

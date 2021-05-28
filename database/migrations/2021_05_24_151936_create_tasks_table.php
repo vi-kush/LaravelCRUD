@@ -15,7 +15,7 @@ class CreateTasksTable extends Migration
     {
         Schema::create('tasks', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('login_id')->constrained();
+            $table->bigInteger('login_id');
             $table->longText('task');
             $table->string('status',10)->default('pending');
             $table->timestamps();

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use App\Models\login;
-//use App\Models\User;
+use App\Models\User;
 
 class apiAuth extends Controller
 {
@@ -14,28 +14,28 @@ class apiAuth extends Controller
         $data=$req->validate([
             'name'=>'required|string',
             'password'=>'required|string',
-            'email'=>'required|unique:logins,useremail',
+            'email'=>'required|unique:users,email',
         ]);
 
         
-        // $log = User::create([
-        //     'name'=> $data['name'],
-        //     'email'=>$data['email'],
-        //     'password'=>md5($data['password']),
-        // ]);
+        $log = User::create([
+            'name'=> $data['name'],
+            'email'=>$data['email'],
+            'password'=>md5($data['password']),
+        ]);
 
         //$token = 'helloatg';        
         
-        $login = new login;
-        //$login->id = $userdata->id;
-        $login->username = $req->name;
-        $login->useremail = $req->email;
-        $login->userpass = md5($req->password);
-        $login->save();
+        // $login = new login;
+        // //$login->id = $userdata->id;
+        // $login->username = $req->name;
+        // $login->useremail = $req->email;
+        // $login->userpass = md5($req->password);
+        // $login->save();
         
-        $token = $login->createToken('helloatg')->plainTextToken;
+        $token = $log->createToken('helloatg')->plainTextToken;
         
-        $userdata=login::where('useremail',$req->email)->first();
+        $userdata=$log::where('email',$req->email)->first();
 
         $response = [
             'user_id'=> $userdata->id,
