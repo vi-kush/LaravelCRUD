@@ -40,13 +40,21 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            @if (Route::has('login'))
+                            @if (Route::currentRouteName()=="login") 
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('app') }}">{{ __('API') }}</a>
+                                </li>
+                            @elseif (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
 
-                            @if (Route::has('register'))
+                            @if (Route::currentRouteName()=="register") 
+                            <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('app') }}">{{ __('API') }}</a>
+                                </li>
+                            @elseif  (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>

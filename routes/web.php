@@ -42,6 +42,7 @@ use App\Http\Controllers\listController;
 // });
 
 Route::view('/tasks','tasks')->middleware('task');
+Route::view('/app','api.api')->name('app');
 
 // Route::get('/tasks',function(){
 //     if(session()->missing('user')) return redirect('login');

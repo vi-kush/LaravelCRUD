@@ -1,0 +1,15 @@
+::-webkit-scrollbar {
+    width: 10px;
+}
+div.container{
+    background:rgba(255, 244, 233, 0.2); 
+    height: 40vh; 
+    border: 1px solid grey; 
+    border-radius: 20px;
+}
+.innerdiv{
+    border:1px solid rgb(179, 179, 179);
+    border-radius: 20px;
+    margin:1%;
+    min-height: 92%;
+}
