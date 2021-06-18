@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\task;
-use App\Models\login;
+use App\Models\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
 
@@ -44,7 +44,7 @@ class apiController extends Controller
             'user_id'=>'required|numeric'
         ]);
 
-        if(!login::find($data['user_id'])){
+        if(!User::find($data['user_id'])){
             return ['status'=>0 , 'error'=> 'ID not in Records. Please enter Valid User_id'];
         }
 

@@ -12,6 +12,15 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable, HasApiTokens;
 
+    public function getUsernameAttribute($name){
+
+        return ucfirst($name);
+    }    
+
+    public function tasks(){
+        return $this->hasmany(task::class,'login_id');
+    }
+
     /**
      * The attributes that are mass assignable.
      *
